@@ -1,4 +1,4 @@
-package com.cmos.driver;
+package com.cmos.driver.idcard;
 
 import java.io.Serializable;
 
