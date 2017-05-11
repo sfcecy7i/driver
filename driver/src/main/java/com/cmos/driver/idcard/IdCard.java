@@ -1,16 +1,11 @@
 package com.cmos.driver.idcard;
 
+import com.cmos.driver.Result;
+
 import java.io.Serializable;
 
 public class IdCard implements Serializable {
-    /**
-     * 是否读取成功
-     */
-    private boolean success;
-    /**
-     * 读取失败时的错误信息
-     */
-    private String error;
+    private Result result;
     /**
      * 公民身份号码
      */
@@ -55,25 +50,17 @@ public class IdCard implements Serializable {
     private String timeTag;
     private String signStr;
 
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
+    }
+
     private String getNonNullString(String source) {
         if (source == null) return "";
         else return source.replaceAll("\\s", "");
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
     }
 
     public String getCardNo() {

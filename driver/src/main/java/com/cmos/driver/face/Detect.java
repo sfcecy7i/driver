@@ -1,6 +1,8 @@
 package com.cmos.driver.face;
 
-
+/**
+ * imageData为相机预览ImageFormat.NV21格式的数据
+ */
 public interface Detect {
     /**
      * 图像质量选项

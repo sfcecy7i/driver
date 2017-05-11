@@ -1,5 +1,7 @@
 package com.cmos.driver.idcard;
 
+import com.cmos.driver.Result;
+
 /**
  * 带SAM模块的身份证读卡器驱动接口
  */
@@ -7,22 +9,20 @@ public interface SamReader {
     /**
      * 打开读卡器，初始化资源
      */
-    void open();
+    Result open();
 
     /**
      * 恢复资源，根据需要实现
      */
-    void resume();
+    Result resume();
 
     /**
      * 读身份证。注意：
      * 成功：
-     * 需要设置 IdCard.setSuccess(true);
+     * 需要设置 IdCard.setResult(Result.SUCCESS());
      * 失败：
-     * 需要设置 IdCard.setSuccess(false);
-     *         IdCard.setError("失败原因");
-     * @see IdCard#setSuccess(boolean) 设置是否成功
-     * @see IdCard#setError(String) 设置失败原因
+     * 需要设置 IdCard.setSuccess(Result.FAILURE("失败原因");
+     * @see IdCard#setResult(Result)  设置是否成功
      * @return
      */
     IdCard read();
@@ -30,10 +30,10 @@ public interface SamReader {
     /**
      * 挂起资源，根据需要实现
      */
-    void pause();
+    Result pause();
 
     /**
      * 关闭读卡器，释放资源
      */
-    void close();
+    Result close();
 }
