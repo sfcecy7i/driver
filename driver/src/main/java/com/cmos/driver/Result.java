@@ -1,7 +1,9 @@
 package com.cmos.driver;
 
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
     private boolean success;
     private String errorMsg;
 
