@@ -35,4 +35,6 @@ public interface Detect {
      * @see FaceInfo
      */
     FaceInfo analyze(byte[] imageData, int options);
+
+    void release();
 }

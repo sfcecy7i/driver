@@ -34,4 +34,6 @@ public interface Compare {
      * @return 比对分值，满分100
      */
     int compareImage(Bitmap image1, Bitmap image2);
+
+    void release();
 }
