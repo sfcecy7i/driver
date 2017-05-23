@@ -1,3 +1,3 @@
 # driver
 
-compile 'com.cmos:driver:1.0.5'
+compile 'com.cmos:driver:1.0.6'
