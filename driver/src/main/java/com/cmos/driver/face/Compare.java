@@ -18,6 +18,18 @@ public interface Compare {
     byte[] extractFeature(Bitmap image);
 
     /**
+     * @param image jpeg格式
+     * @return 全部人脸的特征值，按距离排序（与图像中心点为参照点）
+     */
+    byte[][] extractAllFeatureByDistance(Bitmap image);
+
+    /**
+     * @param image jpeg格式
+     * @return 全部人脸的特征值，按人脸大小排序
+     */
+    byte[][] extractAllFeatureByArea(Bitmap image);
+
+    /**
      * 比较两个特征值
      *
      * @param feature1
@@ -27,7 +39,7 @@ public interface Compare {
     int compareFeature(byte[] feature1, byte[] feature2);
 
     /**
-     * 比较两张图片里的人像
+     * 比较两张图片里的最优人像
      *
      * @param image1
      * @param image2

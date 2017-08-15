@@ -25,7 +25,7 @@ public interface Detect {
     boolean detect(byte[] imageData);
 
     /**
-     * 分析图像
+     * 分析图像，选取最优人脸的单个人脸
      * @param imageData 图像数据
      * @param options 可传多个，比如：OPTION_QUALITY | OPTION_POSITION_RECT | OPTION_KEY_POINTS
      * @return FaceInfo
@@ -35,6 +35,30 @@ public interface Detect {
      * @see FaceInfo
      */
     FaceInfo analyze(byte[] imageData, int options);
+
+    /**
+     * 分析图像，返回全部人脸信息，按距离排序（与图像中心点为参照点）
+     * @param imageData 图像数据
+     * @param options 可传多个，比如：OPTION_QUALITY | OPTION_POSITION_RECT | OPTION_KEY_POINTS
+     * @return FaceInfo
+     * @see Detect#OPTION_QUALITY 图像质量选项
+     * @see Detect#OPTION_POSITION_RECT 人脸位置矩形框选项
+     * @see Detect#OPTION_KEY_POINTS 人脸关键点选项
+     * @see FaceInfo
+     */
+    FaceInfo[] analyzeByDistance(byte[] imageData, int options);
+
+    /**
+     * 分析图像，返回全部人脸信息，按人脸大小排序
+     * @param imageData 图像数据
+     * @param options 可传多个，比如：OPTION_QUALITY | OPTION_POSITION_RECT | OPTION_KEY_POINTS
+     * @return FaceInfo
+     * @see Detect#OPTION_QUALITY 图像质量选项
+     * @see Detect#OPTION_POSITION_RECT 人脸位置矩形框选项
+     * @see Detect#OPTION_KEY_POINTS 人脸关键点选项
+     * @see FaceInfo
+     */
+    FaceInfo[] analyzeByArea(byte[] imageData, int options);
 
     void release();
 }
