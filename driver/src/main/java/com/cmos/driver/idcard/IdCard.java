@@ -187,6 +187,7 @@ public class IdCard implements Serializable, Parcelable {
         dest.writeString(this.address);
         dest.writeString(this.authority);
         dest.writeString(this.period);
+        dest.writeInt(this.avatar.length);
         dest.writeByteArray(this.avatar);
         dest.writeString(this.dn);
         dest.writeString(this.uuid);
@@ -207,7 +208,8 @@ public class IdCard implements Serializable, Parcelable {
         this.address = in.readString();
         this.authority = in.readString();
         this.period = in.readString();
-        this.avatar = in.createByteArray();
+        this.avatar = new byte[in.readInt()];
+        in.readByteArray(this.avatar);
         this.dn = in.readString();
         this.uuid = in.readString();
         this.timeTag = in.readString();
