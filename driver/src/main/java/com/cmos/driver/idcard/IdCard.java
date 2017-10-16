@@ -1,10 +1,13 @@
 package com.cmos.driver.idcard;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.cmos.driver.Result;
 
 import java.io.Serializable;
 
-public class IdCard implements Serializable {
+public class IdCard implements Serializable, Parcelable {
     private Result result;
     /**
      * 公民身份号码
@@ -166,4 +169,60 @@ public class IdCard implements Serializable {
     public void setSignStr(String signStr) {
         this.signStr = signStr;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.result, flags);
+        dest.writeString(this.cardNo);
+        dest.writeString(this.name);
+        dest.writeString(this.sex);
+        dest.writeString(this.ethnicity);
+        dest.writeString(this.birth);
+        dest.writeString(this.address);
+        dest.writeString(this.authority);
+        dest.writeString(this.period);
+        dest.writeByteArray(this.avatar);
+        dest.writeString(this.dn);
+        dest.writeString(this.uuid);
+        dest.writeString(this.timeTag);
+        dest.writeString(this.signStr);
+    }
+
+    public IdCard() {
+    }
+
+    private IdCard(Parcel in) {
+        this.result = in.readParcelable(Result.class.getClassLoader());
+        this.cardNo = in.readString();
+        this.name = in.readString();
+        this.sex = in.readString();
+        this.ethnicity = in.readString();
+        this.birth = in.readString();
+        this.address = in.readString();
+        this.authority = in.readString();
+        this.period = in.readString();
+        this.avatar = in.createByteArray();
+        this.dn = in.readString();
+        this.uuid = in.readString();
+        this.timeTag = in.readString();
+        this.signStr = in.readString();
+    }
+
+    public static final Creator<IdCard> CREATOR = new Creator<IdCard>() {
+        @Override
+        public IdCard createFromParcel(Parcel source) {
+            return new IdCard(source);
+        }
+
+        @Override
+        public IdCard[] newArray(int size) {
+            return new IdCard[size];
+        }
+    };
 }
