@@ -20,5 +20,5 @@ public interface FaceInfo extends Cloneable {
      */
     PointF[] getKeyPoints();
 
-
+    FaceInfo clone();
 }
