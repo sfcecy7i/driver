@@ -4,7 +4,7 @@ package com.cmos.driver.face;
 import android.graphics.PointF;
 import android.graphics.Rect;
 
-public interface FaceInfo {
+public interface FaceInfo extends Cloneable {
     /**
      * 图像质量，满分100
      */
@@ -19,4 +19,6 @@ public interface FaceInfo {
      * 人脸关键点的位置，以数组来表示
      */
     PointF[] getKeyPoints();
+
+
 }
